@@ -13,6 +13,7 @@
             height: 100vh;
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
+            overflow: hidden; /* Prevent scroll bars */
         }
         .wheel {
             width: 300px;
@@ -87,6 +88,18 @@
             color: #3498db;
             text-align: center;
         }
+        .rocket {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 100%);
+            opacity: 0;
+            transition: transform 1s ease, opacity 1s ease;
+        }
+        .rocket.animate {
+            transform: translate(-50%, -200%); /* Adjust for upward movement */
+            opacity: 1;
+        }
     </style>
     <script>
         const drinks = ["Tequilla", "Jagemeester", "Whiskey", "Vodka", "Springbokkie", "Pepsi", "Fruit Juice", "Brandy", "Hot Shot", "3rd Bottle from the left"];
@@ -97,6 +110,7 @@
             const countdownDisplay = document.getElementById("countdown");
             const flashingDisplay = document.getElementById("flashing");
             const resultDisplay = document.getElementById("result");
+            const rocket = document.getElementById("rocket");
             const countdownInterval = setInterval(() => {
                 countdownDisplay.textContent = countdown;
                 countdown--;
@@ -106,6 +120,8 @@
                     setTimeout(() => {
                         resultDisplay.textContent = `Your drink is: ${randomDrink}`;
                         flashingDisplay.style.display = "none";
+                        rocket.textContent = randomDrink; // Set drink on rocket
+                        rocket.classList.add('animate'); // Start rocket animation
                     }, 4000);
                 }
             }, 1000);
@@ -129,7 +145,8 @@
         <div class="slice slice6"><div></div></div>
         <div class="countdown" id="countdown">3</div>
         <div class="flashing" id="flashing"></div>
-        <div class="result" id="result"></div> <!-- Result display -->
+        <div class="result" id="result"></div>
+        <div class="rocket" id="rocket">🚀</div> <!-- Rocket display -->
     </div>
 </body>
 </html>
