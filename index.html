@@ -20,10 +20,10 @@
             border-radius: 50%;
             border: 16px solid #3498db;
             position: relative;
-            transition: transform 4s linear; /* Changed to transition */
+            transition: transform 4s linear;
         }
         .spinning {
-            animation: spin 4s linear forwards; /* Add this class dynamically */
+            animation: spin 4s linear forwards;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -77,6 +77,16 @@
             0% { opacity: 1; }
             100% { opacity: 0.5; }
         }
+        .result {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: #3498db;
+            text-align: center;
+        }
     </style>
     <script>
         const drinks = ["Tequilla", "Jagemeester", "Whiskey", "Vodka", "Springbokkie", "Pepsi", "Fruit Juice", "Brandy", "Hot Shot", "3rd Bottle from the left"];
@@ -86,24 +96,25 @@
             let countdown = 3;
             const countdownDisplay = document.getElementById("countdown");
             const flashingDisplay = document.getElementById("flashing");
+            const resultDisplay = document.getElementById("result");
             const countdownInterval = setInterval(() => {
                 countdownDisplay.textContent = countdown;
                 countdown--;
                 if (countdown < 0) {
                     clearInterval(countdownInterval);
-                    document.querySelector('.wheel').classList.add('spinning'); // Start spinning
+                    document.querySelector('.wheel').classList.add('spinning');
                     setTimeout(() => {
-                        alert(`Your drink is: ${randomDrink}`);
-                        flashingDisplay.style.display = "none"; // Hide flashing options after selection
-                    }, 4000); // Wait for spinning to finish before showing the result
+                        resultDisplay.textContent = `Your drink is: ${randomDrink}`;
+                        flashingDisplay.style.display = "none";
+                    }, 4000);
                 }
-            }, 1000); // Update every second
+            }, 1000);
         }
 
         window.onload = function() {
             const flashingDisplay = document.getElementById("flashing");
-            flashingDisplay.innerHTML = drinks.join('<br>'); // Show the drink options
-            selectRandomDrink(); // Call the function directly on load
+            flashingDisplay.innerHTML = drinks.join('<br>');
+            selectRandomDrink();
         };
     </script>
 </head>
@@ -117,7 +128,8 @@
         <div class="slice slice5"><div></div></div>
         <div class="slice slice6"><div></div></div>
         <div class="countdown" id="countdown">3</div>
-        <div class="flashing" id="flashing"></div> <!-- Flashing drink options -->
+        <div class="flashing" id="flashing"></div>
+        <div class="result" id="result"></div> <!-- Result display -->
     </div>
 </body>
 </html>
