@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Drink Selector</title>
+    <script>
+        function selectRandomDrink() {
+            const drinks = ["Coke", "Pepsi", "Sprite", "Orange Juice", "Water", "Lemonade"];
+            const randomDrink = drinks[Math.floor(Math.random() * drinks.length)];
+            alert(`Your drink is: ${randomDrink}`);
+        }
+    </script>
+</head>
+<body>
+    <h1>Random Drink Selector</h1>
+    <button onclick="selectRandomDrink()">Choose a Drink</button>
+</body>
+</html>
