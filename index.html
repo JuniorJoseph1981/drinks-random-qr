@@ -11,13 +11,11 @@
             alert(`Your drink is: ${randomDrink}`);
         }
 
-        window.onload = function() {
-            document.getElementById("drinkButton").click();
-        };
+        window.onload = selectRandomDrink; // Call the function directly on load
     </script>
 </head>
 <body>
     <h1>Random Drink Selector</h1>
-    <button id="drinkButton" onclick="selectRandomDrink()">Choose a Drink</button>
+    <button onclick="selectRandomDrink()">Choose a Drink</button>
 </body>
 </html>
