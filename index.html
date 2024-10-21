@@ -10,10 +10,14 @@
             const randomDrink = drinks[Math.floor(Math.random() * drinks.length)];
             alert(`Your drink is: ${randomDrink}`);
         }
+
+        window.onload = function() {
+            document.getElementById("drinkButton").click();
+        };
     </script>
 </head>
-<body onload="selectRandomDrink()">
+<body>
     <h1>Random Drink Selector</h1>
-    <button onclick="selectRandomDrink()">Choose a Drink</button>
+    <button id="drinkButton" onclick="selectRandomDrink()">Choose a Drink</button>
 </body>
 </html>
