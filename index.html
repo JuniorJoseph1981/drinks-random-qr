@@ -60,6 +60,20 @@
             padding: 10px; /* Add some padding */
             text-align: center; /* Center the text */
         }
+        .flashing {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: black;
+            text-align: center;
+            animation: flash 0.5s infinite alternate;
+        }
+        @keyframes flash {
+            0% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
     </style>
     <script>
         const drinks = ["Coke", "Pepsi", "Sprite", "Orange Juice", "Water", "Lemonade"];
@@ -68,17 +82,21 @@
             const randomDrink = drinks[Math.floor(Math.random() * drinks.length)];
             let countdown = 3;
             const countdownDisplay = document.getElementById("countdown");
+            const flashingDisplay = document.getElementById("flashing");
             const countdownInterval = setInterval(() => {
                 countdownDisplay.textContent = countdown;
                 countdown--;
                 if (countdown < 0) {
                     clearInterval(countdownInterval);
                     alert(`Your drink is: ${randomDrink}`);
+                    flashingDisplay.style.display = "none"; // Hide flashing options after selection
                 }
             }, 1000); // Update every second
         }
 
         window.onload = function() {
+            const flashingDisplay = document.getElementById("flashing");
+            flashingDisplay.innerHTML = drinks.join('<br>'); // Show the drink options
             selectRandomDrink(); // Call the function directly on load
         };
     </script>
@@ -93,6 +111,7 @@
         <div class="slice slice5"><div></div></div>
         <div class="slice slice6"><div></div></div>
         <div class="countdown" id="countdown">3</div>
+        <div class="flashing" id="flashing"></div> <!-- Flashing drink options -->
     </div>
 </body>
 </html>
