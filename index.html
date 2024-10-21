@@ -12,22 +12,41 @@
             justify-content: center;
             height: 100vh;
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
         }
         .wheel {
             width: 300px;
             height: 300px;
-            border: 16px solid #f3f3f3;
-            border-top: 16px solid #3498db;
             border-radius: 50%;
-            animation: spin 4s ease-in-out forwards;
+            border: 16px solid #3498db;
+            position: relative;
+            animation: spin 4s linear forwards;
         }
         @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-        .choices {
-            display: none;
+        .slice {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            overflow: hidden;
+            border-right: 2px solid white;
+            transform-origin: 100% 100%;
         }
+        .slice div {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            border-radius: 50%;
+            transform: rotate(0deg);
+        }
+        .slice1 div { background: red; transform: rotate(0deg); }
+        .slice2 div { background: blue; transform: rotate(60deg); }
+        .slice3 div { background: green; transform: rotate(120deg); }
+        .slice4 div { background: yellow; transform: rotate(180deg); }
+        .slice5 div { background: orange; transform: rotate(240deg); }
+        .slice6 div { background: purple; transform: rotate(300deg); }
     </style>
     <script>
         const drinks = ["Coke", "Pepsi", "Sprite", "Orange Juice", "Water", "Lemonade"];
@@ -46,17 +65,13 @@
 </head>
 <body>
     <h1>Random Drink Selector</h1>
-    <div class="wheel"></div>
-    <div class="choices">
-        <h2>Choices:</h2>
-        <ul>
-            <li>Coke</li>
-            <li>Pepsi</li>
-            <li>Sprite</li>
-            <li>Orange Juice</li>
-            <li>Water</li>
-            <li>Lemonade</li>
-        </ul>
+    <div class="wheel">
+        <div class="slice slice1"><div></div></div>
+        <div class="slice slice2"><div></div></div>
+        <div class="slice slice3"><div></div></div>
+        <div class="slice slice4"><div></div></div>
+        <div class="slice slice5"><div></div></div>
+        <div class="slice slice6"><div></div></div>
     </div>
 </body>
 </html>
